@@ -1,14 +1,19 @@
-# 
+# 2025 Spring Project
+
 ## Environment
+```
 python==3.10
 cuda 12.4 and corresponding pytorch
 genesis-world
+```
 
 ## TODOs
-- [] add SO101 to Genesis simulation
-- [] finetune gr00t with example datasets and run them in Genesis
-- [] add JY robot arm to simulation
-- [] LeRobot support to JY Arm
-- [] figure out a good way to do teleop
-- [] collect data with JY robot arm
-- [] finetune gr00t with collected data
+
+- [ ] add SO101 to Genesis simulation
+- [ ] finetune gr00t with example datasets and run them in Genesis
+- [ ] add JY robot arm to simulation
+- [ ] LeRobot support to JY Arm
+- [ ] figure out a good way to do teleop
+- [ ] collect data with JY robot arm
+- [ ] finetune gr00t with collected data
+
