@@ -4,8 +4,9 @@
 ```
 python==3.10
 cuda 12.4 and corresponding pytorch
-genesis-world
+genesis-world (install from github)
 ```
+numpy and pydantic version conflict might cause issue.
 
 ## TODOs
 

@@ -111,6 +111,7 @@ dist
 # Other
 .DS_Store
 wandb
+*.mp4
 
 # Playground
 playground/
