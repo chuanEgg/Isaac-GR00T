@@ -74,7 +74,7 @@
     </collision>
   </link>
   <!-- Frame base (dummy link + fixed joint) -->
-  <link name="base">
+  <link name="base_frame">
     <origin xyz="0 0 0" rpy="0 -0 0"/>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -82,10 +82,10 @@
       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
     </inertial>
   </link>
-  <joint name="base_frame" type="fixed">
+  <joint name="base_frame_joint" type="fixed">
     <origin xyz="0.020791 0.0157608 0.0324817" rpy="-3.14159 -9.52796e-30 -2.64454e-46"/>
     <parent link="base"/>
-    <child link="base"/>
+    <child link="base_frame"/>
     <axis xyz="0 0 0"/>
   </joint>
   <!-- Link shoulder -->
@@ -321,7 +321,7 @@
     </collision>
   </link>
   <!-- Frame gripper (dummy link + fixed joint) -->
-  <link name="gripper">
+  <link name="gripper_frame">
     <origin xyz="0 0 0" rpy="0 -0 0"/>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -329,10 +329,10 @@
       <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
     </inertial>
   </link>
-  <joint name="gripper_frame" type="fixed">
+  <joint name="gripper_frame_joint" type="fixed">
     <origin xyz="-0.0079 -0.000218121 -0.0981274" rpy="-1.5708 -0 -1.5708"/>
     <parent link="gripper"/>
-    <child link="gripper"/>
+    <child link="gripper_frame"/>
     <axis xyz="0 0 0"/>
   </joint>
   <!-- Link moving_jaw_so101_v1 -->

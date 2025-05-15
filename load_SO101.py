@@ -1,4 +1,6 @@
 import genesis as gs
+import numpy as np
+
 gs.init(backend=gs.cuda)
 
 scene = gs.Scene(
@@ -23,27 +25,29 @@ scene = gs.Scene(
 
 plane = scene.add_entity(gs.morphs.Plane())
 arm = scene.add_entity(gs.morphs.MJCF(file='assets/SO101/so101.xml'))
-# bg = scene.add_entity(gs.morphs.MJCF(file='urdf/SO101/scene.xml'))
+
 
 cam = scene.add_camera(
     res    = (1280, 720),
     pos    = (0.5, 0.0, 0.3),
     lookat = (0, 0, 0),
-    fov    = 90,
+    fov    = 60,
     GUI    = False,
 )
 
+jnt_names = ['1', '2', '3', '4', '5', '6']
+dofs_idx = [arm.get_joint(name).dof_idx_local for name in jnt_names]
+# print(dofs_idx)
 scene.build()
-cam.start_recording()
+# cam.start_recording()
 
-import numpy as np
+print('Initial DOFs:', arm.get_dofs_position(dofs_idx))
 
-for i in range(720):
-    scene.step()
-    # cam.set_pose(
-    #     pos = (0.5 * np.sin(i/60), 0.5 * np.cos(i/60), 0.05),
-    #     lookat = (0, 0, 0.1),
-    # )
-    cam.render()
+# print
+# for i in range(300):
+#     scene.step()
+#     if i < 50:
+#         arm.set_dofs_position()
+#     cam.render()
 
-cam.stop_recording(save_to_filename='test_2.mp4', fps=60)
+# cam.stop_recording(save_to_filename='test_2.mp4', fps=30)

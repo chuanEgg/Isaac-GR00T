@@ -12,6 +12,7 @@ numpy and pydantic version conflict might cause issue.
 
 - [ ] add SO101 to Genesis simulation
 - [ ] finetune gr00t with example datasets and run them in Genesis
+- [ ] export JY robot arm as URDF and/or MJCF
 - [ ] add JY robot arm to simulation
 - [ ] LeRobot support to JY Arm
 - [ ] figure out a good way to do teleop
