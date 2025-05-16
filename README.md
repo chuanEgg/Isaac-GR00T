@@ -15,8 +15,13 @@ numpy and pydantic version conflict might cause issue.
 - [ ] figure out a way to do teleoperation in Genesis/ Real-World
 - [ ] export JY robot arm as URDF and/or MJCF
 - [ ] add JY robot arm to simulation
+- [ ] design a webcam hook (First-Person View)
+- [ ] design a webcam stand (Third-Person View)
+- [ ] design a gripper (maybe just use that of SO101)
 - [ ] LeRobot support to JY Arm
-- [ ] figure out a good way to do teleop
 - [ ] collect data with JY robot arm
 - [ ] finetune gr00t with collected data
+
+- [ ] explore the usage of Isaac-lab or Mujoco
+- [ ] MimicGen implement
 
