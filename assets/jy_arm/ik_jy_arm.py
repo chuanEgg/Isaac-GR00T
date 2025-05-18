@@ -35,7 +35,7 @@ arm = scene.add_entity(
 )
 
 cam = scene.add_camera(
-  res = (1280, 720),
+  res = (2160, 1080),
   pos = (1.0, 0.0, 0.3),
   lookat = (0.0, 0.0, 0.2),
   fov = 40,
@@ -62,7 +62,7 @@ qpos_1 = arm.inverse_kinematics(
 
 qpos_2 = arm.inverse_kinematics(
   link = hand,
-  pos = np.array([0.2, -0.3, 0.6]),
+  pos = np.array([0.6, -0.3, 0.6]),
   quat = np.array([0.0, 0.0, 1.0, 0.0])
 )
 cam.start_recording()
