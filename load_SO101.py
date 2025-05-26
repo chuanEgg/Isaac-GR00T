@@ -13,7 +13,7 @@ scene = gs.Scene(
         max_FPS       = None,
     ),
     vis_options = gs.options.VisOptions(
-        show_world_frame = True,
+        show_world_frame = False,
         world_frame_size = 1.0,
         show_link_frame  = False,
         show_cameras     = False,
@@ -24,14 +24,26 @@ scene = gs.Scene(
 )
 
 plane = scene.add_entity(gs.morphs.Plane())
-arm = scene.add_entity(gs.morphs.MJCF(file='assets/SO101/so101.xml'))
-
+arm = scene.add_entity(
+    gs.morphs.URDF(
+        file='assets/SO101/so101_new_calib.urdf',
+        pos=(0,0,-0.01),
+        euler=(0,0,180),
+        fixed=True,
+    )
+)
+cube = scene.add_entity(
+    gs.morphs.Box(
+        pos=(0.1, 0.3, 0.025),
+        size=(0.05, 0.05, 0.05),
+    )
+)
 
 cam = scene.add_camera(
     res    = (1280, 720),
-    pos    = (0.5, 0.0, 0.5),
-    lookat = (0, 0, 0),
-    fov    = 60,
+    pos    = (0.8, 0.4, 0.3),
+    lookat = (0.1, 0.2, 0.05),
+    fov    = 40,
     GUI    = False,
 )
 
@@ -47,11 +59,11 @@ jnt_names = ['1', '2', '3', '4', '5', '6']
 scene.build()
 
 dofs_idx = [arm.get_joint(name).dof_idx_local for name in jnt_names]
-jaw = arm.get_link('moving_jaw_so101_v1')
+jaw = arm.get_link('jaw')
 qpos = arm.inverse_kinematics(
     link = jaw,
-    pos = np.array([0.0, 0.5, 0.3]),
-    quat = np.array([0.0, 0.0, 0.0, 1.0])
+    pos = np.array([0.1, 0.3, 0.1]),
+    quat = np.array([0, 0, 0, 1]),
 )
 # print(dofs_idx)
 print(qpos)
@@ -63,14 +75,3 @@ for i in range(100):
     cam.render()
 
 cam.stop_recording(save_to_filename='test_2.mp4', fps=30)
-# print('Initial DOFs:', arm.get_dofs_position(dofs_idx))
-
-# for i in range(300):
-#     scene.step()
-#     if i < 50:
-#         arm.set_dofs_position(np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]), dofs_idx)
-#     elif i < 100:
-#         arm.set_dofs_position(np.array([1.0, 2.0, -3.0, 1.0, 0.5, 0.5]), dofs_idx)
-#     cam.render()
-
-# cam.stop_recording(save_to_filename='test_2.mp4', fps=30)
